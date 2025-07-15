@@ -8,4 +8,5 @@ tmp/
 .npm
 .eslintcache
 
+docs/
 .direnv/

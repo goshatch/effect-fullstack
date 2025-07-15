@@ -1,0 +1,16 @@
+#+title: HTTP testing
+
+#+begin_src restclient
+GET http://localhost:3333/
+#+end_src
+
+#+RESULTS:
+: #+BEGIN_SRC text
+: Hello, world!
+: GET http://localhost:3333/
+: HTTP/1.1 200 OK
+: Content-Type: text/plain
+: Date: Tue, 15 Jul 2025 14:19:24 GMT
+: Content-Length: 13
+: Request duration: 0.064640s
+: #+END_SRC
