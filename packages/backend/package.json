@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@effect/platform": "^0.87.12",
+    "@effect/platform-bun": "^0.72.17",
+    "effect": "^3.16.12"
+  }
+}
