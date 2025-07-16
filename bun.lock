@@ -1,0 +1,17 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "todo-monorepo",
+      "devDependencies": {
+        "@effect/language-service": "^0.27.1",
+        "typescript": "^5.8.3",
+      },
+    },
+  },
+  "packages": {
+    "@effect/language-service": ["@effect/language-service@0.27.1", "", { "bin": { "effect-language-service": "cli.js" } }, "sha512-BTOiDMdHdEQhvt5LTTeLZUbpUoHSsH4Jy5MEUDJLPEOMMN6vVgi3AZteYHLBhmT9Rv+aTxeICdgRT+hGgCoQXw=="],
+
+    "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
+  }
+}
