@@ -1,4 +1,12 @@
 {
   "name": "todo-monorepo",
-  "private": true
+  "private": true,
+  "scripts": {
+    "typecheck": "bunx tspc"
+  },
+  "devDependencies": {
+    "@effect/language-service": "^0.27.1",
+    "ts-patch": "^3.3.0",
+    "typescript": "^5.8.3"
+  }
 }
