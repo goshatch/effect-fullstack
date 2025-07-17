@@ -19,15 +19,17 @@ const ApiRouter = HttpRouter.empty.pipe(
 
       const socket = yield* request.upgrade;
 
-      yield* socket.run((data: Uint8Array) =>
+      yield* socket.run((data) =>
         Effect.gen(function* () {
-          const message = new TextDecoder().decode(data);
+          const message = typeof data === 'string' 
+            ? data 
+            : new TextDecoder().decode(data);
           yield* Effect.log(`[ws] received: ${message}`);
 
           yield* Effect.scoped(
             Effect.gen(function* () {
               const write = yield* socket.writer;
-              yield* write(new TextEncoder().encode(`[ws] echo: ${message}`));
+              yield* write(`[ws] echo: ${message}`);
             }),
           );
         }),
