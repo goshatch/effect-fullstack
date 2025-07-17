@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "effect": "catalog:",
+    "@effect/platform": "catalog:",
+    "@effect/platform-browser": "^0.68.1",
+    "@todo/shared": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",

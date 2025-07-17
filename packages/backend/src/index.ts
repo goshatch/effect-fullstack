@@ -6,7 +6,16 @@ import {
   HttpServerResponse,
 } from '@effect/platform';
 import { BunHttpServer, BunRuntime } from '@effect/platform-bun';
-import { Clock, Effect, Layer, Logger, LogLevel } from 'effect';
+import {
+  Clock,
+  Effect,
+  Layer,
+  Logger,
+  LogLevel,
+  Schema,
+  Schedule,
+} from 'effect';
+import { WebSocketResponse } from '@todo/shared';
 
 const ApiRouter = HttpRouter.empty.pipe(
   HttpRouter.get('/', HttpServerResponse.text('Hello, world!')),
@@ -19,20 +28,57 @@ const ApiRouter = HttpRouter.empty.pipe(
 
       const socket = yield* request.upgrade;
 
-      yield* socket.run((data) =>
+      // Handle incoming messages
+      const messageHandler = socket.run((data) =>
         Effect.gen(function* () {
           const message =
             typeof data === 'string' ? data : new TextDecoder().decode(data);
           yield* Effect.log(`[ws] received: ${message}`);
 
+          const timestamp = yield* Clock.currentTimeMillis;
+
+          const response: WebSocketResponse = {
+            timestamp,
+            message,
+          };
+
+          const encoded = yield* Schema.encode(WebSocketResponse)(response);
+
           yield* Effect.scoped(
             Effect.gen(function* () {
               const write = yield* socket.writer;
-              yield* write(`[ws] echo: ${message}`);
+              yield* write(JSON.stringify(encoded));
             }),
           );
         }),
       );
+
+      // Broadcast timestamp every 5 seconds
+      const timestampBroadcast = Effect.repeat(
+        Effect.gen(function* () {
+          const timestamp = yield* Clock.currentTimeMillis;
+          const response: WebSocketResponse = {
+            timestamp,
+            message: 'Timestamp',
+          };
+
+          const encoded = yield* Schema.encode(WebSocketResponse)(response);
+
+          yield* Effect.scoped(
+            Effect.gen(function* () {
+              const write = yield* socket.writer;
+              yield* write(JSON.stringify(encoded));
+            }),
+          );
+        }),
+        Schedule.fixed('1 seconds'),
+      );
+
+      // Run both handlers concurrently
+      yield* Effect.all([messageHandler, timestampBroadcast], {
+        concurrency: 'unbounded',
+        discard: true,
+      });
 
       return HttpServerResponse.empty();
     }),

@@ -16,6 +16,7 @@
       "dependencies": {
         "@effect/platform": "catalog:",
         "@effect/platform-bun": "catalog:",
+        "@todo/shared": "workspace:*",
         "effect": "catalog:",
       },
       "devDependencies": {
@@ -26,6 +27,10 @@
       "name": "frontend",
       "version": "0.0.0",
       "dependencies": {
+        "@effect/platform": "catalog:",
+        "@effect/platform-browser": "^0.68.1",
+        "@todo/shared": "workspace:*",
+        "effect": "catalog:",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
       },
@@ -35,6 +40,13 @@
         "@vitejs/plugin-react": "^4.6.0",
         "globals": "^16.3.0",
         "vite": "^7.0.4",
+      },
+    },
+    "packages/shared": {
+      "name": "@todo/shared",
+      "version": "1.0.0",
+      "dependencies": {
+        "effect": "catalog:",
       },
     },
   },
@@ -109,6 +121,8 @@
     "@effect/language-service": ["@effect/language-service@0.27.2", "", { "bin": { "effect-language-service": "cli.js" } }, "sha512-AFgxoIZ6xpfwCZp7+1mj3f1HsK3Yqe9I0iUfpf8Iu2gl9F3dmdFiOvuoLRVSkfVsK2BTQr8kv2zPi53Lst2haw=="],
 
     "@effect/platform": ["@effect/platform@0.87.13", "", { "dependencies": { "find-my-way-ts": "^0.1.6", "msgpackr": "^1.11.4", "multipasta": "^0.2.5" }, "peerDependencies": { "effect": "^3.16.13" } }, "sha512-CmeP3DL54lllJenW9CIrvNeUy8D+hY3NFQWDyd+q7t3aAMHmyGznqCnm345uBN21KfsahCOofL8YQYxHHcUGbw=="],
+
+    "@effect/platform-browser": ["@effect/platform-browser@0.68.1", "", { "dependencies": { "multipasta": "^0.2.5" }, "peerDependencies": { "@effect/platform": "^0.88.1", "effect": "^3.16.14" } }, "sha512-vEmzDob2Kd2PwPDAOJBJQ0F/cHNSx9unMZFFjdCdH/Ibmxd93SGwbxMwOx+4E6vsCtPKHJMjmIISVr2YXToXxQ=="],
 
     "@effect/platform-bun": ["@effect/platform-bun@0.72.18", "", { "dependencies": { "@effect/platform-node-shared": "^0.42.18", "multipasta": "^0.2.5" }, "peerDependencies": { "@effect/cluster": "^0.41.18", "@effect/platform": "^0.87.13", "@effect/rpc": "^0.64.14", "@effect/sql": "^0.40.14", "effect": "^3.16.13" } }, "sha512-CvAuS6kpP3F7ydXJRau4a9X1smzYd2JBjOY5WySbtJRNiGD6R1x+LDkgY9nuFRfjeMmgLRtUhSA/vH4oq1QXQw=="],
 
@@ -265,6 +279,8 @@
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.45.1", "", { "os": "win32", "cpu": "x64" }, "sha512-M/fKi4sasCdM8i0aWJjCSFm2qEnYRR8AMLG2kxp6wD13+tMGA4Z1tVAuHkNRjud5SW2EM3naLuK35w9twvf6aA=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.0.0", "", {}, "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA=="],
+
+    "@todo/shared": ["@todo/shared@workspace:packages/shared"],
 
     "@types/babel__core": ["@types/babel__core@7.20.5", "", { "dependencies": { "@babel/parser": "^7.20.7", "@babel/types": "^7.20.7", "@types/babel__generator": "*", "@types/babel__template": "*", "@types/babel__traverse": "*" } }, "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA=="],
 

@@ -1,0 +1,11 @@
+{
+  "name": "@todo/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "dependencies": {
+    "effect": "catalog:"
+  }
+}
