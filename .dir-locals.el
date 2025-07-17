@@ -11,4 +11,11 @@
                  (list :name "@effect/language-service"
                        :location (expand-file-name
                                   "node_modules/@effect/language-service"
-                                  root))))))))))
+                                  root)))))))
+     (lsp-eslint-enable . nil)))
+ (typescript-tsx-mode
+  . ((lsp-eslint-enable . nil)))
+ (js-mode
+  . ((lsp-eslint-enable . nil)))
+ (js-jsx-mode
+  . ((lsp-eslint-enable . nil))))
