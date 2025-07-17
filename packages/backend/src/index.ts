@@ -21,9 +21,8 @@ const ApiRouter = HttpRouter.empty.pipe(
 
       yield* socket.run((data) =>
         Effect.gen(function* () {
-          const message = typeof data === 'string' 
-            ? data 
-            : new TextDecoder().decode(data);
+          const message =
+            typeof data === 'string' ? data : new TextDecoder().decode(data);
           yield* Effect.log(`[ws] received: ${message}`);
 
           yield* Effect.scoped(

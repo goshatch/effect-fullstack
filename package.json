@@ -2,6 +2,7 @@
   "name": "todo-monorepo",
   "private": true,
   "scripts": {
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"bun run --cwd packages/backend dev\" \"bun run --cwd packages/frontend dev\"",
     "typecheck": "bunx tspc",
     "lint": "bunx @biomejs/biome check .",
     "lint:fix": "bunx @biomejs/biome check --write .",
@@ -11,7 +12,18 @@
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
     "@effect/language-service": "^0.27.1",
+    "concurrently": "^9.2.0",
     "ts-patch": "^3.3.0",
     "typescript": "^5.8.3"
+  },
+  "workspaces": {
+    "catalog": {
+      "@effect/platform": "^0.87.12",
+      "@effect/platform-bun": "^0.72.17",
+      "effect": "^3.16.12"
+    },
+    "packages": [
+      "packages/*"
+    ]
   }
 }

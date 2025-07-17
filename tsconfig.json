@@ -18,10 +18,12 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    // Some stricter flags
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": false,
+    "erasableSyntaxOnly": true,
+    "noUncheckedSideEffectImports": true,
     // plugins
     "plugins": [
       {

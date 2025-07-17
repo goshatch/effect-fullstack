@@ -2,16 +2,17 @@
   "name": "backend",
   "module": "src/index.ts",
   "type": "module",
+  "root": false,
   "private": true,
   "devDependencies": {
     "@types/bun": "latest"
   },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
   "dependencies": {
-    "@effect/platform": "^0.87.12",
-    "@effect/platform-bun": "^0.72.17",
-    "effect": "^3.16.12"
+    "@effect/platform": "catalog:",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
+  },
+  "scripts": {
+    "dev": "bun run src/index.ts"
   }
 }
