@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n API,WEB -c cyan,magenta \"bun run --cwd packages/backend dev\" \"bun run --cwd packages/frontend dev\"",
-    "typecheck": "bunx tspc",
+    "typecheck": "bunx tspc -b",
     "lint": "bunx @biomejs/biome check .",
     "lint:fix": "bunx @biomejs/biome check --write .",
     "format": "bunx @biomejs/biome format --write .",
